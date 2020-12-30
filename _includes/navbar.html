@@ -1,0 +1,29 @@
+{%- assign default_paths = site.pages | map: "path" -%}
+{%- assign page_paths = site.header_pages | default: default_paths -%}
+{%- assign titles_size = site.pages | map: 'title' | join: '' | size -%}
+
+<nav class="navbar is-dark">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="{{ '/' | relative_url }}">
+            {{ site.title | escape }}
+        </a>
+    </div>
+
+    <div class="navbar-menu">
+        <div class="navbar-start">
+            {%- for path in page_paths -%}
+                {%- assign my_page = site.pages | where: "path", path | first -%}
+                {%- if my_page.title -%}
+                    <a class="navbar-item" href="{{ my_page.url | relative_url }}">
+                        {{ my_page.title | escape }}
+                    </a>
+                {%- endif -%}
+            {%- endfor -%}
+        </div>
+        <div class="navbar-end">
+            <a class="navbar-item">
+                Test
+            </a>
+        </div>
+    </div>
+</nav>
