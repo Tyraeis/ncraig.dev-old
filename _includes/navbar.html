@@ -12,7 +12,7 @@
     </div>
 
     <div class="navbar-menu">
-        <div class="navbar-start">
+        <div class="navbar-end">
             {%- for path in page_paths -%}
                 {%- assign my_page = site.pages | where: "path", path | first -%}
                 {%- if my_page.title -%}
@@ -21,11 +21,6 @@
                     </a>
                 {%- endif -%}
             {%- endfor -%}
-        </div>
-        <div class="navbar-end">
-            <a class="navbar-item">
-                Test
-            </a>
         </div>
     </div>
 </nav>
