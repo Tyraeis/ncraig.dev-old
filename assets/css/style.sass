@@ -10,7 +10,7 @@ $title-weight: 300
 $subtitle-family: "Inconsolata", monospace
 $subtitle-weight: 300
 
-$primary: hsl(10, 100%, 60%)
+$primary: hsl(5, 100%, 50%)
 
 $link: $primary
 $link-visited: darken($primary, 15%)
@@ -29,6 +29,9 @@ html, body
 
 body section:first-of-type
     flex-grow: 1
+
+.subtitle:not(.is-spaced) + .tags
+    margin-top: -1rem
 
 @import "bulma/bulma.sass"
 @import "github.css"

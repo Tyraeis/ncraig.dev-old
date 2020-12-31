@@ -4,14 +4,16 @@ layout: default
 
 {% assign date_format = site.date_format | default: "%b %d, %Y" %}
 
-<section class="hero is-dark is-bold is-fullheight">
+<section class="hero is-dark is-bold is-medium">
     <div class="hero-head">
         {% include navbar.html %}
     </div>
     <div class="hero-body">
         <div class="container">
             <h1 class="title is-1">{{ site.author.name }}</h1>
-            <h2 class="subtitle is-3">Subtitle</h2>
+            {% if site.author.description %}
+                <h2 class="subtitle is-4">{{ site.author.description }}</h2>
+            {% endif %}
             <p>
                 {% if site.author.github %}
                     <a class="icon is-large" href="https://github.com/{{ site.author.github }}">
@@ -44,33 +46,3 @@ layout: default
     </section>
     {% endif %}
 {% endfor %}
-
-<!-- {% if site.projects.size > 0 %}
-<section class="section">
-    <div class="container is-max-desktop">
-        <h1 class="title is-1">Projects</h1>
-        <div class="columns is-multiline">
-            {% for project in site.projects %}
-            <div class="column is-half">
-                {% include card.html page=project %}
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-{% endif %}
-
-{% if site.posts.size > 0 %}
-<section class="section">
-    <div class="container is-max-desktop">
-        <h1 class="title is-1">Posts</h1>
-        <div class="columns is-multiline">
-            {% for post in site.posts %}
-                <div class="column is-half">
-                    {% include card.html page=post %}
-                </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-{% endif %} -->

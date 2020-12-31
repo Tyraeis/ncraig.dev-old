@@ -1,6 +1,7 @@
 title: ncraig.dev
 author:
   name: Noah Craig
+  description: Computer science student at the University of Oklahoma
   email: noahcraig123@gmail.com
   github: Tyraeis
 description: >-
@@ -10,7 +11,7 @@ url: "https://ncraig.dev"
 
 collections:
   projects:
-    output: true
+    output: false
 
 featured_collections:
   - title: "Projects"
