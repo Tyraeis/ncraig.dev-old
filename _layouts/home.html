@@ -2,49 +2,75 @@
 layout: default
 ---
 
-{%- assign date_format = site.date_format | default: "%b %-d, %Y" -%}
+{% assign date_format = site.date_format | default: "%b %d, %Y" %}
 
 <section class="hero is-dark is-bold is-fullheight">
     <div class="hero-head">
-        {%- include navbar.html -%}
+        {% include navbar.html %}
     </div>
     <div class="hero-body">
         <div class="container">
             <h1 class="title is-1">{{ site.author.name }}</h1>
             <h2 class="subtitle is-3">Subtitle</h2>
+            <p>
+                {% if site.author.github %}
+                    <a class="icon is-large" href="https://github.com/{{ site.author.github }}">
+                        <ion-icon name="logo-github" size="large"></ion-icon>
+                    </a>
+                {% endif %}
+                {% if site.author.email %}
+                    <a class="icon is-large" href="mailto:{{ site.author.email }}">
+                        <ion-icon name="mail-outline" size="large"></ion-icon>
+                    </a>
+                {% endif %}
+            </p>
         </div>
     </div>
 </section>
 
+{% for item in site.featured_collections %}
+    {% if site[item.collection].size > 0 %}
+    <section class="section">
+        <div class="container is-max-desktop">
+            <h1 class="title is-1">{{ item.title }}</h1>
+            <div class="columns is-multiline">
+                {% for page in site[item.collection] %}
+                <div class="column is-half">
+                    {% include card.html page=page %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+{% endfor %}
+
+<!-- {% if site.projects.size > 0 %}
 <section class="section">
     <div class="container is-max-desktop">
+        <h1 class="title is-1">Projects</h1>
         <div class="columns is-multiline">
-            {%- for post in site.posts -%}
-                <div class="column is-half">
-                    <div class="card">
-                        {%- if post.image -%}
-                        <div class="card-image">
-                            <a href="{{ post.url }}"><figure class="image is-16by9">
-                                <img src="{{ post.image }}" alt="{{ post.image_desc | default: post.title }}">
-                            </figure></a>
-                        </div>
-                        {%- endif -%}
-                        <div class="card-content">
-                            <div class="content">
-                                <h1 class="title"><a href="{{ post.url }}">{{ post.title | escape }}</a></h1>
-
-                                {%- if site.show_excerpts -%}
-                                    {{ post.excerpt }}
-                                {%- endif -%}
-
-                                <time datetime="{{ post.date | date_to_xmlschema }}">
-                                    {{ post.date | date: '%b %-d, %Y' }}
-                                </time>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {%- endfor -%}
+            {% for project in site.projects %}
+            <div class="column is-half">
+                {% include card.html page=project %}
+            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
+{% endif %}
+
+{% if site.posts.size > 0 %}
+<section class="section">
+    <div class="container is-max-desktop">
+        <h1 class="title is-1">Posts</h1>
+        <div class="columns is-multiline">
+            {% for post in site.posts %}
+                <div class="column is-half">
+                    {% include card.html page=post %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %} -->

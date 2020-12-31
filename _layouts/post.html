@@ -10,7 +10,7 @@ layout: default
             
             <h1 class="title">{{ page.title | escape }}</h1>
 
-            <p class="post-meta">
+            <h2 class="subtitle is-6">
                 {%- assign date_format = site.date_format | default: "%b %-d, %Y" -%}
                 <time datetime="{{ page.date | date_to_xmlschema }}">
                     {{ page.date | date: date_format }}
@@ -28,7 +28,7 @@ layout: default
                         {%- if forloop.last == false %}, {% endif -%}
                     {% endfor %}
                 {%- endif -%}
-            </p>
+            </h2>
 
             {%- if page.image -%}
                 <figure class="image">
