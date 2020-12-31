@@ -17,13 +17,13 @@
     </div>
     {%- endif -%}
     <div class="card-content">
+        <h1 class="title"><a href="{{ url }}">{{ include.page.title | escape }}</a></h1>
+        <h2 class="subtitle is-6">
+            <time datetime="{{ include.page.date | date_to_xmlschema }}">
+                {{ include.page.date | date: '%b %-d, %Y' }}
+            </time>
+        </h2>
         <div class="content">
-            <h1 class="title"><a href="{{ url }}">{{ include.page.title | escape }}</a></h1>
-            <h2 class="subtitle is-6">
-                <time datetime="{{ include.page.date | date_to_xmlschema }}">
-                    {{ include.page.date | date: '%b %-d, %Y' }}
-                </time>
-            </h2>
 
             {%- if site.show_excerpts -%}
             {{ include.page.excerpt }}
