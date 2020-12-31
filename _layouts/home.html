@@ -36,7 +36,7 @@ layout: default
         <div class="container is-max-desktop">
             <h1 class="title is-1">{{ item.title }}</h1>
             <div class="columns is-multiline">
-                {% for page in site[item.collection] %}
+                {% for page in site[item.collection] reversed %}
                 <div class="column is-half">
                     {% include card.html page=page %}
                 </div>

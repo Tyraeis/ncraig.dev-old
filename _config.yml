@@ -20,6 +20,7 @@ featured_collections:
     collection: posts
 
 show_excerpts: true
+excerpt_separator: <!--more-->
 
 # Build settings
 plugins:
