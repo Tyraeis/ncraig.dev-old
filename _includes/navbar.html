@@ -5,7 +5,9 @@
 <nav class="navbar is-dark">
     <div class="navbar-brand">
         <a class="navbar-item" href="{{ '/' | relative_url }}">
-            {{ site.title | escape }}
+            <div class="brand">
+                <span>{{ site.brand | escape }}</span>
+            </div>
         </a>
     </div>
 

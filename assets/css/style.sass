@@ -11,9 +11,11 @@ $subtitle-family: "Inconsolata", monospace
 $subtitle-weight: 300
 
 $primary: hsl(5, 100%, 50%)
+$primary-lighter: lighten($primary, 15%)
+$primary-darker: darken($primary, 15%)
 
 $link: $primary
-$link-visited: darken($primary, 15%)
+$link-visited: $primary-darker
 
 .content
     code, pre
@@ -32,6 +34,18 @@ body section:first-of-type
 
 .subtitle:not(.is-spaced) + .tags
     margin-top: -1rem
+
+.brand
+    color: $primary-lighter
+    border: 1px solid $primary-lighter
+    width: 2rem
+    height: 2rem
+    border-radius: 1rem
+    text-align: center
+    font-family: $title-family
+    span
+        position: relative
+        top: 0.125rem
 
 @import "bulma/bulma.sass"
 @import "github.css"
