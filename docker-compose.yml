@@ -13,8 +13,37 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    networks:
+      - nginx
     volumes:
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
       - ./nginx/conf.d:/etc/nginx/conf.d
       - ./blog/_site:/var/www/ncraig.dev
+      - ./mygpo/mygpo/static:/var/www/mygpo.ncraig.dev
+  postgres:
+    build:
+      context: .
+      dockerfile: postgres.Dockerfile
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    networks:
+      - postgres
+    shm_size: 256MB
+  mygpo:
+    build:
+      context: .
+      dockerfile: mygpo.Dockerfile
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    networks:
+      - postgres
+      - nginx
+    ports:
+      - 8080:8080
+networks:
+  postgres:
+  nginx:
