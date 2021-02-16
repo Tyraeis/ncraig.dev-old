@@ -1,0 +1,3 @@
+[submodule "mygpo/mygpo"]
+	path = mygpo/mygpo
+	url = https://github.com/gpodder/mygpo.git

@@ -12,5 +12,9 @@ if [ ! -d "blog/_site" ]; then
     ./scripts/build_blog.sh
 fi
 
+if [ ! -f "mygpo/env/SECRET_KEY" ]; then
+    ./scripts/gen_secret_key.sh
+fi
+
 sudo cp ./website.service /etc/systemd/system/website.service
 sudo systemctl enable --now website
