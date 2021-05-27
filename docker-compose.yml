@@ -20,7 +20,7 @@ services:
       - ./data/certbot/www:/var/www/certbot
       - ./nginx/conf.d:/etc/nginx/conf.d
       - ./blog/_site:/var/www/ncraig.dev
-      - ./mygpo/mygpo/static:/var/www/mygpo.ncraig.dev
+      - ./mygpo/mygpo/static:/var/www/mygpo.ncraig.dev/static
   postgres:
     build:
       context: .
@@ -44,6 +44,8 @@ services:
       - nginx
     ports:
       - 8080:8080
+    volumes:
+      - ./mygpo/env:/srv/mygpo/env
 networks:
   postgres:
   nginx:
