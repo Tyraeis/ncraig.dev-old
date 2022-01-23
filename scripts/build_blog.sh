@@ -7,3 +7,5 @@ sudo docker run --rm \
     -e JEKYLL_GID=`id -g` \
     -it jekyll/jekyll:4 \
     jekyll build
+
+sudo cp -r ./blog/_site/ /var/www/ncraig.dev/
